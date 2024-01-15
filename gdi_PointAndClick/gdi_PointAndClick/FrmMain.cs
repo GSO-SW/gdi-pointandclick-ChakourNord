@@ -5,6 +5,7 @@ namespace gdi_PointAndClick
     public partial class FrmMain : Form
     {
         List<Rectangle> rectangles = new List<Rectangle>();
+        List<Point> points = new List<Point>();
 
         public FrmMain()
         {
@@ -33,11 +34,15 @@ namespace gdi_PointAndClick
         private void FrmMain_MouseClick(object sender, MouseEventArgs e)
         {
             Point mausposition = e.Location;
-
+            
             Rectangle r = new Rectangle(mausposition.X-20, mausposition.Y-20, 40, 40);
-
-            rectangles.Add(r);  // Kurze Variante: rectangles.Add( new Rectangle(...)  );
-
+            
+            if (!points.Contains(mausposition))
+            {
+                rectangles.Add(r); // Kurze Variante: rectangles.Add( new Rectangle(...)  );
+                points.Add(mausposition);
+            }
+                
             Refresh();
         }
 
