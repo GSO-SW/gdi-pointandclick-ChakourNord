@@ -6,6 +6,7 @@ namespace gdi_PointAndClick
     {
         List<Rectangle> rectangles = new List<Rectangle>();
         List<Point> points = new List<Point>();
+        Random rnd = new Random();
 
         public FrmMain()
         {
@@ -35,7 +36,7 @@ namespace gdi_PointAndClick
         {
             Point mausposition = e.Location;
             
-            Rectangle r = new Rectangle(mausposition.X-20, mausposition.Y-20, 40, 40);
+            Rectangle r = new Rectangle(mausposition.X-20, mausposition.Y-20, rnd.Next(1,100), rnd.Next(1, 100));
             
             if (!points.Contains(mausposition))
             {
